@@ -19,3 +19,27 @@ def carregar_tarefas():
     except FileNotFoundError:
         return []
 ```
+<hr></hr>
+
+## Função que permite a inserção de pontos e nega a inserção de letras em inputs type text
+
+```javascript
+function aplicarFormatacaoDecimal(seletor) {
+    $(seletor).on('keypress', function(e) {
+        let inputNumber = '';
+        setTimeout(() => {
+            let input = $(this).val().split("");
+            let hasDecimalPoint = false;
+            for (let i = 0; i < input.length; i++) {
+                if (!isNaN(input[i]) && input[i] != " ") {
+                    inputNumber += input[i].trim();
+                } else if (input[i] === '.' && !hasDecimalPoint) {
+                    inputNumber += '.';
+                    hasDecimalPoint = true;
+                }
+            }
+            $(this).val(inputNumber);
+        }, 1);
+    });
+}
+```
